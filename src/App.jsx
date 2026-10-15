@@ -102,7 +102,7 @@ function App() {
   const downloadCV = (
     <a
       className="btn btn-outline-warning fw-bold px-3"
-      href="../public/Haymanot_Yetwale_Resume.pdf"
+      href="/Haymanot_Yetwale_Resume.pdf"
       download="Haymanot_Yetwale_Resume.pdf"
     >
       Download CV 📄
@@ -138,13 +138,27 @@ function App() {
             } d-lg-flex`}
           >
             <div className="ms-auto d-flex align-items-center gap-3 flex-wrap nav-actions">
-              <a className="nav-link" href="#about" onClick={closeMenu}>
+              <a
+                className="nav-link"
+                href="#about"
+                onClick={closeMenu}
+              >
                 About
               </a>
-              <a className="nav-link" href="#skills" onClick={closeMenu}>
+
+              <a
+                className="nav-link"
+                href="#skills"
+                onClick={closeMenu}
+              >
                 Skills
               </a>
-              <a className="nav-link" href="#projects" onClick={closeMenu}>
+
+              <a
+                className="nav-link"
+                href="#projects"
+                onClick={closeMenu}
+              >
                 Projects
               </a>
 
@@ -202,7 +216,7 @@ function App() {
                   </a>
 
                   <a
-                    href="../public/Haymanot_Yetwale_Resume.pdf"
+                    href="/Haymanot_Yetwale_Resume.pdf"
                     download="Haymanot_Yetwale_Resume.pdf"
                     className="btn btn-outline-light btn-lg fw-bold"
                   >
@@ -252,8 +266,8 @@ function App() {
                 from Bahir Dar University and bring professional
                 banking experience to my technology journey. After
                 completing AI-Powered Full-Stack Application
-                Development training at Evangadi Academy, I am applying my
-                financial-services perspective to software projects,
+                Development training at Evangadi Academy, I am applying
+                my financial-services perspective to software projects,
                 with an interest in secure digital banking, financial
                 data integrity, and practical FinTech solutions.
               </p>
@@ -281,7 +295,7 @@ function App() {
               >
                 {!imageError ? (
                   <img
-                    src="../public/profile.jpg"
+                    src="/profile.jpg"
                     alt="Haymanot Yetwale"
                     style={{
                       width: '100%',
@@ -314,6 +328,7 @@ function App() {
         <section id="skills" className="skills-section py-5">
           <div className="container">
             <p className="section-kicker">MY TOOLKIT</p>
+
             <h2 className="section-title">Technical Skills</h2>
 
             <p className="section-intro">
