@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 const skills = [
@@ -26,9 +26,8 @@ const projects = [
     status: 'Full-Stack Project',
     github: 'https://github.com/haymanot2026/gpt-clone-fullstack',
     live: 'https://gpt-clone-fullstack.vercel.app',
-    image:
-      'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=85',
-    imageAlt: 'Artificial intelligence concept',
+    image: '/chatgpt-clone.jpg',
+    imageAlt: 'GPT Clone AI application interface',
   },
   {
     title: 'Netflix Clone',
@@ -38,9 +37,8 @@ const projects = [
     status: 'Frontend Project',
     github: 'https://github.com/haymanot2026',
     live: 'https://net-fex-s25-tan.vercel.app/',
-    image:
-      'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=85',
-    imageAlt: 'Cinema screen and movie theater',
+    image: '/netflix-clone.jpg',
+    imageAlt: 'Netflix Clone streaming platform interface',
   },
   {
     title: 'AI-Powered EvangadiForum',
@@ -51,9 +49,8 @@ const projects = [
     github:
       'https://github.com/haymanot2026/AI-Powered-EvangadiForum',
     live: 'https://ai-powered-evangadi-forum-roan.vercel.app',
-    image:
-      'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85',
-    imageAlt: 'Team collaborating on a digital project',
+    image: '/evangadi-forum.jpg',
+    imageAlt: 'AI-Powered Evangadi Forum discussion application',
   },
   {
     title: 'Maleda SACCO System',
@@ -63,9 +60,8 @@ const projects = [
     status: 'In Progress',
     github: '',
     live: '',
-    image:
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=85',
-    imageAlt: 'Financial analytics dashboard',
+    image: '/maleda-sacco.jpg',
+    imageAlt: 'Maleda SACCO management dashboard concept',
   },
 ]
 
@@ -79,21 +75,20 @@ function App() {
   })
 
   const [menuOpen, setMenuOpen] = useState(false)
-  const [imageError, setImageError] = useState(false)
 
   useEffect(() => {
     document.body.setAttribute(
       'data-theme',
-      isDarkMode ? 'dark' : 'light'
+      isDarkMode ? 'dark' : 'light',
     )
 
     try {
       localStorage.setItem(
         'theme',
-        isDarkMode ? 'dark' : 'light'
+        isDarkMode ? 'dark' : 'light',
       )
     } catch {
-      // Theme still works if localStorage is unavailable.
+      // Theme works even when localStorage is unavailable.
     }
   }, [isDarkMode])
 
@@ -112,7 +107,11 @@ function App() {
   return (
     <div className="portfolio">
       {/* Navigation */}
-      <nav className="navbar navbar-expand-lg px-4 py-3">
+      <nav
+        className={`navbar navbar-expand-lg px-3 px-md-4 py-3 ${
+          isDarkMode ? 'navbar-dark' : 'navbar-light'
+        }`}
+      >
         <div className="container">
           <a
             className="navbar-brand fw-bold"
@@ -127,12 +126,14 @@ function App() {
             type="button"
             aria-label="Toggle navigation"
             aria-expanded={menuOpen}
-            onClick={() => setMenuOpen(!menuOpen)}
+            aria-controls="portfolioNavigation"
+            onClick={() => setMenuOpen((open) => !open)}
           >
             <span className="navbar-toggler-icon" />
           </button>
 
           <div
+            id="portfolioNavigation"
             className={`navbar-collapse ${
               menuOpen ? 'd-flex' : 'd-none'
             } d-lg-flex`}
@@ -163,7 +164,8 @@ function App() {
               </a>
 
               <button
-                onClick={() => setIsDarkMode(!isDarkMode)}
+                type="button"
+                onClick={() => setIsDarkMode((dark) => !dark)}
                 className="btn btn-theme-toggle"
                 aria-label="Toggle color theme"
               >
@@ -253,73 +255,66 @@ function App() {
 
         {/* About */}
         <section id="about" className="container py-5">
-          <div className="row align-items-center">
+          <div className="row align-items-center g-4">
             <div className="col-lg-7">
               <p className="section-kicker">MY BACKGROUND</p>
 
               <h2 className="section-title">
-                Finance Meets Technology
+                About Me: Finance Meets Technology
               </h2>
 
+              <h4 className="about-subtitle fw-bold mb-3">
+                Bridging Banking, AI &amp; Digital Innovation
+              </h4>
+
               <p className="about-text">
-                I hold a Bachelor’s degree in Accounting and Finance
-                from Bahir Dar University and bring professional
-                banking experience to my technology journey. After
-                completing AI-Powered Full-Stack Application
-                Development training at Evangadi Academy, I am applying
-                my financial-services perspective to software projects,
-                with an interest in secure digital banking, financial
-                data integrity, and practical FinTech solutions.
+                I am an AI-Powered Full-Stack Developer with
+                8 years of banking experience and a passion for
+                building secure, intelligent, and scalable
+                digital solutions.
               </p>
+
+              <p className="about-text">
+                With a background in Accounting and Finance and
+                specialized training in AI-powered application
+                development, I combine financial industry knowledge
+                with modern software engineering to solve real-world
+                business problems.
+              </p>
+
+              <p className="about-text">
+                My interests include full-stack development, AI
+                integration, FinTech, database management, and
+                secure digital systems. I am passionate about
+                improving financial services through automation
+                and data-driven solutions.
+              </p>
+
+              <div className="about-highlight mt-4">
+                <h5 className="gold fw-bold">My Mission</h5>
+                <p className="about-text">
+                  To build innovative digital products that make
+                  financial services smarter, more accessible,
+                  and more efficient.
+                </p>
+
+                <h5 className="gold fw-bold mt-3">My Vision</h5>
+                <p className="about-text mb-0">
+                  To contribute to the digital transformation of
+                  banking through AI-powered FinTech solutions.
+                </p>
+              </div>
 
               <a
                 href="#projects"
-                className="btn btn-warning fw-bold mt-3"
+                className="btn btn-warning fw-bold mt-4"
               >
                 View My Work →
               </a>
             </div>
 
             <div className="col-lg-5 text-center mt-4 mt-lg-0">
-              <div
-                className="profile-placeholder p-0 overflow-hidden"
-                style={{
-                  width: '250px',
-                  height: '250px',
-                  borderRadius: '50%',
-                  margin: '0 auto',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                {!imageError ? (
-                  <img
-                    src="/profile.jpg"
-                    alt="Haymanot Yetwale"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                    }}
-                    onError={() => setImageError(true)}
-                  />
-                ) : (
-                  <div>
-                    <span
-                      aria-hidden="true"
-                      style={{
-                        fontSize: '2.5rem',
-                        fontWeight: 'bold',
-                      }}
-                    >
-                      HY
-                    </span>
-                    <p className="m-0">Haymanot Yetwale</p>
-                    <small>Add your photo to public/profile.jpg</small>
-                  </div>
-                )}
-              </div>
+              <ProfilePhoto />
             </div>
           </div>
         </section>
@@ -362,20 +357,17 @@ function App() {
           </p>
 
           <div className="row g-4 mt-2">
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <div
                 className="col-md-6 col-lg-3"
                 key={project.title}
               >
                 <article className="project-card h-100 d-flex flex-column">
-                  <div className="project-image-wrapper">
-                    <img
-                      src={project.image}
-                      alt={project.imageAlt}
-                      className="project-image"
-                      loading="lazy"
-                    />
-                  </div>
+                  <span className="project-number">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <ProjectImage project={project} />
 
                   <div className="project-content p-3 d-flex flex-column flex-grow-1">
                     <p className="section-kicker mb-2">
@@ -390,11 +382,13 @@ function App() {
                       {project.description}
                     </p>
 
-                    <span className="project-status">
-                      {project.status}
-                    </span>
+                    <div className="mb-3">
+                      <span className="project-status">
+                        {project.status}
+                      </span>
+                    </div>
 
-                    <div className="mt-auto pt-3 d-flex flex-wrap gap-2">
+                    <div className="mt-auto pt-2 d-flex flex-wrap gap-2">
                       {project.github && (
                         <a
                           href={project.github}
@@ -418,8 +412,8 @@ function App() {
                       )}
 
                       {!project.github && !project.live && (
-                        <span className="small text-secondary">
-                          Project in development
+                        <span className="badge bg-warning-subtle text-warning border border-warning-subtle py-2 px-3 fw-semibold">
+                          In Active Development
                         </span>
                       )}
                     </div>
@@ -441,20 +435,64 @@ function App() {
 
             <p className="section-intro mx-auto">
               Interested in AI-powered applications, digital banking,
-              FinTech, or software development? Explore my projects
-              and connect with me.
+              FinTech, or software development? Let's discuss
+              collaboration, career opportunities, or project inquiries.
             </p>
 
-            <div className="d-flex justify-content-center gap-3 flex-wrap mt-4">
-              <a
-                href="https://github.com/haymanot2026"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-warning btn-lg fw-bold"
-              >
-                GitHub Profile ↗
-              </a>
+            <div className="row g-4 justify-content-center mt-3 text-start">
+              <div className="col-md-6 col-lg-4">
+                <div className="contact-card">
+                  <span className="contact-icon" aria-hidden="true">
+                    ✉️
+                  </span>
+                  <h3>Email Directly</h3>
+                  <p>haymanotyetwale86@gmail.com</p>
+                  <a
+                    href="mailto:haymanotyetwale86@gmail.com"
+                    className="btn btn-warning fw-bold btn-sm w-100"
+                  >
+                    Send Email ↗
+                  </a>
+                </div>
+              </div>
 
+              <div className="col-md-6 col-lg-4">
+                <div className="contact-card">
+                  <span className="contact-icon" aria-hidden="true">
+                    💻
+                  </span>
+                  <h3>GitHub Profile</h3>
+                  <p>Explore source code &amp; repositories</p>
+                  <a
+                    href="https://github.com/haymanot2026"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline-warning fw-bold btn-sm w-100"
+                  >
+                    View GitHub ↗
+                  </a>
+                </div>
+              </div>
+
+              <div className="col-md-6 col-lg-4">
+                <div className="contact-card">
+                  <span className="contact-icon" aria-hidden="true">
+                    📄
+                  </span>
+                  <h3>Curriculum Vitae</h3>
+                  <p>Download full resume &amp; experience</p>
+                  <a
+                    href="/Haymanot_Yetwale_Resume.pdf"
+                    download="Haymanot_Yetwale_Resume.pdf"
+                    className="btn btn-outline-neon fw-bold btn-sm w-100"
+                  >
+                    Download CV 📄
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="d-flex justify-content-center gap-3 flex-wrap mt-5">
               <a
                 href="#home"
                 className="btn btn-outline-light btn-lg fw-bold"
@@ -480,10 +518,65 @@ function App() {
           </p>
 
           <p className="small mb-0">
-            © {new Date().getFullYear()} Haymanot Yetwale. All rights reserved.
+            © {new Date().getFullYear()} Haymanot Yetwale.
+            All rights reserved.
           </p>
         </div>
       </footer>
+    </div>
+  )
+}
+
+function ProfilePhoto() {
+  const [imageError, setImageError] = useState(false)
+
+  return (
+    <div className="profile-wrapper">
+      {!imageError ? (
+        <img
+          src="/profile.jpg"
+          alt="Haymanot Yetwale"
+          className="profile-photo"
+          onError={() => setImageError(true)}
+        />
+      ) : (
+        <div className="profile-fallback">
+          <span aria-hidden="true" className="profile-initials">
+            HY
+          </span>
+          <p className="m-0 fw-bold">Haymanot Yetwale</p>
+          <small className="text-muted">
+            Banking &amp; FinTech Developer
+          </small>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function ProjectImage({ project }) {
+  const [imageError, setImageError] = useState(false)
+
+  return (
+    <div className="project-image-wrapper">
+      {!imageError ? (
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          className="project-image"
+          loading="lazy"
+          onError={() => setImageError(true)}
+        />
+      ) : (
+        <div
+          className="project-image-fallback"
+          role="img"
+          aria-label={project.imageAlt}
+        >
+          <span>{project.category}</span>
+          <strong>{project.title}</strong>
+        </div>
+      )}
     </div>
   )
 }
